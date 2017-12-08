@@ -14,7 +14,7 @@ film1 = Film.new({'title' => 'Let The Right One In', 'price' => 8})
 film1.save()
 
 customer_list = Customer.all()
-
+film_list = Film.all()
 
 binding.pry
 nil
