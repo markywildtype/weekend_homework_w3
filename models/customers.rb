@@ -20,12 +20,11 @@ class Customer
     @id = customer_hash_array[0]['id'].to_i
   end
 
-  # def update_name()
-  #   sql = "UPDATE customers SET name WHERE name = $1"
-  #   values = [@name]
-  #   SqlRunner.run(sql, values)
-  # end
-
+  def update_name(new_name)
+    sql = "UPDATE customers SET name = $1 WHERE name = $2"
+    values = [new_name, @name]
+    SqlRunner.run(sql, values)
+  end
 
   def self.all()
     sql = "SELECT * FROM customers;"
