@@ -26,6 +26,10 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
+  def remove_funds(amount)
+    @funds -= amount
+  end
+
   def self.all()
     sql = "SELECT * FROM customers;"
     all_customers_hashes = SqlRunner.run(sql)

@@ -16,12 +16,15 @@ film1.save()
 ticket1 = Ticket.new({'customer_id' => customer1.id, 'film_id' => film1.id})
 ticket1.save()
 
-customer1.update_name('Mark E Blanford')
+customer1.name = 'Mark J Blanford'
+customer1.update_name(customer1.name)
 
 customer_list = Customer.all()
 film_list = Film.all()
 ticket_list = Ticket.all()
 
+customer1.remove_funds(8)
+customer_funds = customer1.funds()
 
 
 binding.pry
