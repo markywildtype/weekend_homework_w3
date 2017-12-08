@@ -26,6 +26,8 @@ ticket_list = Ticket.all()
 customer1.remove_funds(8)
 customer_funds = customer1.funds()
 
+customer1.funds = 45
+customer_updated_funds = customer1.funds
 
 binding.pry
 nil

@@ -26,6 +26,13 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
+  def update_funds(new_funds)
+    sql = "UPDATE customers SET funds = $1 WHERE funds = $2"
+    values = [new_funds, @funds]
+  end
+
+#helper function:
+
   def remove_funds(amount)
     @funds -= amount
   end
