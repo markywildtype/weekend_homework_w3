@@ -2,8 +2,8 @@ require_relative('../db/sql_runner.rb')
 
 class Customer
 
-attr_accessor :name, :funds
-attr_reader :id
+  attr_accessor :name, :funds
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i
@@ -19,6 +19,13 @@ attr_reader :id
     customer_hash_array = SqlRunner.run(sql, values)
     @id = customer_hash_array[0]['id'].to_i
   end
+
+  # def update_name()
+  #   sql = "UPDATE customers SET name WHERE name = $1"
+  #   values = [@name]
+  #   SqlRunner.run(sql, values)
+  # end
+
 
   def self.all()
     sql = "SELECT * FROM customers;"

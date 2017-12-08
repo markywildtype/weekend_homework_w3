@@ -1,9 +1,9 @@
 require('pry-byebug')
 require_relative('models/customers.rb')
 require_relative('models/films.rb')
-# require_relative('models/tickets.rb')
+require_relative('models/tickets.rb')
 
-# Ticket.delete_all()
+Ticket.delete_all()
 Film.delete_all()
 Customer.delete_all()
 
@@ -13,8 +13,17 @@ customer1.save()
 film1 = Film.new({'title' => 'Let The Right One In', 'price' => 8})
 film1.save()
 
+ticket1 = Ticket.new({'customer_id' => customer1.id, 'film_id' => film1.id})
+ticket1.save()
+
+# customer1.name = 'Marky Blanford'
+# customer1.update()
+
 customer_list = Customer.all()
 film_list = Film.all()
+ticket_list = Ticket.all()
+
+
 
 binding.pry
 nil
