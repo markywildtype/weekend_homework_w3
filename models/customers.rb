@@ -20,4 +20,16 @@ attr_reader :id
     @id = customer_hash_array[0]['id'].to_i
   end
 
+  def self.all()
+    sql = "SELECT * FROM customers;"
+    all_customers_hashes = SqlRunner.run(sql)
+    all_customers = all_customers_hashes.map() { |customer_hash| Customer.new(customer_hash)}
+    return all_customers
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM customers;"
+    SqlRunner.run(sql)
+  end
+
 end
