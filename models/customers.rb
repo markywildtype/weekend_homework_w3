@@ -21,20 +21,6 @@ class Customer
     @id = customer_hash_array[0]['id'].to_i
   end
 
-#combine into a single update function (see pizza shop)
-
-  # def update_name()
-  #   sql = "UPDATE customers SET name = $1 WHERE id = $2"
-  #   values = [@name, @id]
-  #   SqlRunner.run(sql, values)
-  # end
-  #
-  # def update_funds()
-  #   sql = "UPDATE customers SET funds = $1 WHERE id = $2"
-  #   values = [@funds, @id]
-  # end
-
-
   def update()
     sql = "UPDATE customers SET (name, funds)
     = ($1, $2)
@@ -43,6 +29,12 @@ class Customer
     SqlRunner.run(sql, values)
   end
 
+  def delete()
+    sql = "DELETE FROM customers
+    WHERE id = $1;"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
 #helper function:
 
