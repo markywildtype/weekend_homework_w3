@@ -24,6 +24,10 @@ customer1.name = 'Mark E Blanford'
 customer1.funds = 55
 customer1.update
 
+film1.title = 'Let Me In'
+film1.price = 6
+film1.update()
+
 
 
 customer_list = Customer.all()
