@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require('pry-byebug')
 
 class Customer
 
@@ -20,22 +21,34 @@ class Customer
     @id = customer_hash_array[0]['id'].to_i
   end
 
-  def update_name(new_name)
-    sql = "UPDATE customers SET name = $1 WHERE name = $2"
-    values = [new_name, @name]
+#combine into a single update function (see pizza shop)
+
+  # def update_name()
+  #   sql = "UPDATE customers SET name = $1 WHERE id = $2"
+  #   values = [@name, @id]
+  #   SqlRunner.run(sql, values)
+  # end
+  #
+  # def update_funds()
+  #   sql = "UPDATE customers SET funds = $1 WHERE id = $2"
+  #   values = [@funds, @id]
+  # end
+
+
+  def update()
+    sql = "UPDATE customers SET (name, funds)
+    = ($1, $2)
+    WHERE id = $3;"
+    values = [@name, @funds, @id]
     SqlRunner.run(sql, values)
   end
 
-  def update_funds(new_funds)
-    sql = "UPDATE customers SET funds = $1 WHERE funds = $2"
-    values = [new_funds, @funds]
-  end
 
 #helper function:
 
-  def remove_funds(amount)
-    @funds -= amount
-  end
+  # def remove_funds(amount)
+  #   @funds -= amount
+  # end
 
   def self.all()
     sql = "SELECT * FROM customers;"
