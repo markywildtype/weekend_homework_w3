@@ -44,15 +44,19 @@ class Customer
     WHERE tickets.customer_id = $1;"
     values = [@id]
     film_array = SqlRunner.run(sql, values)
-    films = film_array.map { |film| Film.new(film)}
+    films = film_array.map {|film| Film.new(film).title}
     return films
   end
 
-#helper function:
-
-  # def remove_funds(amount)
-  #   @funds -= amount
-  # end
+  def buy_ticket(film)
+    @funds -= film.price
+    sql = "INSERT INTO tickets (customer_id, film_id)
+    VALUES ($1, $2);"
+    values = [@id, film.id()]
+    bought_ticket = SqlRunner.run(sql, values)
+    new_ticket = bought_ticket.map {|ticket| Ticket.new(ticket)}
+    update()
+  end
 
   def self.all()
     sql = "SELECT * FROM customers;"

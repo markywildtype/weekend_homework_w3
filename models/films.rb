@@ -43,7 +43,7 @@ class Film
     WHERE tickets.film_id = $1;"
     values = [@id]
     customer_array = SqlRunner.run(sql, values)
-    customers = customer_array.map {|customer| Customer.new(customer)}
+    customers = customer_array.map {|customer| Customer.new(customer).name}
     return customers
   end
 
