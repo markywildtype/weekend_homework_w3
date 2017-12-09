@@ -14,6 +14,8 @@ customer2.save()
 
 film1 = Film.new({'title' => 'Let The Right One In', 'price' => 8})
 film1.save()
+film2 = Film.new({'title' => 'Ghostbusters', 'price' => 5})
+film2.save()
 
 ticket1 = Ticket.new({'customer_id' => customer1.id, 'film_id' => film1.id})
 ticket1.save()
@@ -35,12 +37,13 @@ film_list = Film.all()
 ticket_list = Ticket.all()
 
 customer2.delete()
+film2.delete()
 
 # customer1.remove_funds(8)
 # customer_funds = customer1.funds()
 
 updated_customer_list = Customer.all()
-
+updated_film_list = Film.all()
 
 binding.pry
 nil
