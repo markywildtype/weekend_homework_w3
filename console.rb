@@ -38,11 +38,9 @@ customer_list = Customer.all()
 film_list = Film.all()
 ticket_list = Ticket.all()
 
-# binding.pry
-
-customer2.delete()
-film2.delete()
-ticket1.delete()
+# customer2.delete()
+# film2.delete()
+# ticket1.delete()
 
 # customer1.remove_funds(8)
 # customer_funds = customer1.funds()
@@ -50,6 +48,8 @@ ticket1.delete()
 updated_customer_list = Customer.all()
 updated_film_list = Film.all()
 updated_ticket_list = Ticket.all()
+customer_films = customer1.films()
+film_customers = film1.customers()
 
 binding.pry
 nil

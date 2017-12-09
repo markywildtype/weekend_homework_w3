@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('films.rb')
 require('pry-byebug')
 
 class Customer
@@ -34,6 +35,17 @@ class Customer
     WHERE id = $1;"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def films()
+    sql = "SELECT DISTINCT films.title FROM films
+    INNER JOIN tickets
+    ON tickets.film_id = films.id
+    WHERE tickets.customer_id = $1;"
+    values = [@id]
+    film_array = SqlRunner.run(sql, values)
+    films = film_array.map { |film| Film.new(film)}
+    return films
   end
 
 #helper function:
