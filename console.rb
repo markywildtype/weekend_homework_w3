@@ -63,6 +63,7 @@ customer_films = customer3.films()
 film1_customers = film1.customers()
 film3_customers = film3.customers()
 number_tickets_bought = customer1.number_of_tickets()
+number_customers_film1 = film1.number_of_customers()
 
 binding.pry
 nil

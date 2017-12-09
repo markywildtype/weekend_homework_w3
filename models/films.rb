@@ -47,6 +47,10 @@ class Film
     return customers
   end
 
+  def number_of_customers()
+    return customers().length()
+  end
+
   def self.all()
     sql = "SELECT * FROM films;"
     all_films_hashes = SqlRunner.run(sql)

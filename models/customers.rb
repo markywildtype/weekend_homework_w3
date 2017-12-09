@@ -59,12 +59,7 @@ class Customer
   end
 
   def number_of_tickets()
-    sql = "SELECT * FROM tickets
-    WHERE customer_id = $1;"
-    values = [@id]
-    tickets_hash_array = SqlRunner.run(sql, values)
-    tickets_array = tickets_hash_array.map {|ticket_hash| Ticket.new(ticket_hash)}
-    return tickets_array.length()
+    return films().length()
   end
 
   def self.all()
